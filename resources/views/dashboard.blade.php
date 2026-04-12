@@ -1,0 +1,110 @@
+@extends('layouts.layout')
+@section('title','EnerSol | Dashboard')
+@section('content')
+
+<main class="text-white px-8 mt-10">
+
+    <section>
+        <div class="mx-auto grid grid-cols-1 lg:grid-cols-3 gap-[5rem] items-start">
+            <!-- Desc -->
+            <div class="lg:col-span-1">
+                <h1 class="text-6xl font-bold  mb-6">
+                    Welcome in,<br>
+                    <span>Ener<span class="text-[#FBB108]">Sol</span></span>
+                </h1>
+                <p class="text-gray-400 text-lg font-light max-w-xs ">
+                    Suivi et analyse de la production et de la consommation d'énergie solaire
+                </p>
+
+                <!-- icons -->
+                <div class="flex mb-8 mt-2">
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full border text-green-600 border-green-600">
+                        <i class="fa-solid fa-battery-full text-xs"></i>
+                    </div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full border border-yellow-400 text-yellow-400">
+                        <i class="fa-solid fa-bolt text-xs"></i>
+                    </div>
+                    <div class="w-8 h-8 flex items-center justify-center rounded-full border border-red-400 text-red-400">
+                        <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--  section bateries and meteo cards -->
+            <div class="lg:col-span-2 flex justify-end">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <!-- batterie card -->
+                    <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] w-[320px] transition-all hover:border-[#FBB108]/30 group">
+                        <div class="flex justify-between mb-6">
+                            <h2 class="text-gray-400">Batterie 🔋</h2>
+                        </div>
+                    </div>
+
+                    <!-- meteo card -->
+                    <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] w-[320px] transition-all hover:border-[#FBB108]/30 group">
+
+                        <div class="flex justify-between items-center mb-8">
+                            <h2 class="text-gray-400 text-xs uppercase tracking-[0.2em] font-bold">Météo</h2>
+                            @if(isset($weather['weather'][0]['icon']))
+                            <img src="http://openweathermap.org/img/wn/{{ $weather['weather'][0]['icon'] }}.png"
+                                class="w-8 h-8 opacity-80 group-hover:scale-110 transition-transform" alt="weather icon">
+                            @endif
+                        </div>
+
+                        @if($weather && isset($weather['main']))
+                        <div class="space-y-1">
+                            <h3 class="text-white text-3xl font-black italic tracking-tighter uppercase">
+                                {{ $weather['name'] }}
+                            </h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-[#FBB108] text-4xl font-black">
+                                    {{ round($weather['main']['temp']) }}°
+                                </span>
+                                <span class="text-gray-500 text-[10px] uppercase font-bold tracking-widest">
+                                    {{ $weather['weather'][0]['description'] }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 flex justify-between border-t border-white/5 pt-4 text-[9px] text-gray-500 uppercase tracking-tighter font-bold">
+                            <span>Humidité: {{ $weather['main']['humidity'] }}%</span>
+                            <span>Vent: {{ round($weather['wind']['speed']) }} km/h</span>
+                        </div>
+                        @else
+                        <div class="py-10 text-center">
+                            <p class="text-gray-600 text-[10px] uppercase tracking-widest">Données indisponibles</p>
+                            <span class="text-[8px] text-gray-700 italic">Vérifiez l'activation de l'API</span>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- section cards consommation et production -->
+    <section class="">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mt-2">
+            <!-- Production d'énergie card -->
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col items-center">
+                <h2 class="text-gray-400 self-start mb-8 font-medium">Production d'énergie</h2>
+            </div>
+            <!-- Consommation card -->
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col items-center">
+                <h2 class="text-gray-400 self-start mb-8 font-medium">Consommation</h2>
+
+            </div>
+            <!-- statistique card -->
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col items-center w-[640px]">
+                <h2 class="text-gray-400 self-start mb-8 font-medium">statistique</h2>
+            </div>
+        </div>
+
+    </section>
+
+
+</main>
+
+@endsection
