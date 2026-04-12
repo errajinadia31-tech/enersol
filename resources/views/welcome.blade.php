@@ -227,7 +227,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-easing="ease-out">
-                    <h3 class="text-ener-gold uppercase tracking-[0.4em] text-xs font-bold mb-4 italic">À Propos du Projet</h3>
+                    <h3 class="text-ener-gold uppercase tracking-[0.4em] text-xs font-bold mb-4 italic">À Propos du EnerSol</h3>
                     <h2 class="text-4xl md:text-6xl font-black uppercase mb-8 leading-tight">Une solution intelligente pour <span class="italic font-light text-white/80"> une énergie plus intelligente.</span></h2>
 
                     <div class="space-y-6">

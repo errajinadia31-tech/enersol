@@ -44,9 +44,8 @@ class DashboardController extends Controller
         if ($response->successful()) {
             $weather = $response->json();
         } else {
-            // إلا فشل فـ جلب الطقس ديال المدينة لي دخل user، كنرجعو لـ Oujda كديفو
             $fallback = Http::get("https://api.openweathermap.org/data/2.5/weather", [
-                'q' => 'Oujda',
+                'q' => 'Casablanca',
                 'appid' => $apiKey,
                 'units' => 'metric',
                 'lang' => 'fr'
@@ -59,17 +58,17 @@ class DashboardController extends Controller
 
     // --- 3. بيانات الطاقة ---
     $zones = $user->zones()->with('panels')->get();
-    $userPanelIds = \App\Models\Panel::where('user_id', $user->id)->pluck('id');
+    $userPanelIds = Panel::where('user_id', $user->id)->pluck('id');
 
-    $totalEnergyToday = \App\Models\EnergyData::whereIn('panel_id', $userPanelIds)
+    $totalEnergyToday = EnergyData::whereIn('panel_id', $userPanelIds)
                                     ->whereDate('created_at', today())
                                     ->sum('power');
 
-    $activePanelsCount = \App\Models\Panel::where('user_id', $user->id)
+    $activePanelsCount = Panel::where('user_id', $user->id)
                                   ->where('status', 'active')
                                   ->count();
 
-    $latestReadings = \App\Models\EnergyData::whereIn('panel_id', $userPanelIds)
+    $latestReadings = EnergyData::whereIn('panel_id', $userPanelIds)
                                     ->with('panel')
                                     ->latest()
                                     ->take(10)
