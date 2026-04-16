@@ -34,7 +34,7 @@
     </style>
 </head>
 
-<body class="bg-[#0a0a0a] text-white antialiased">
+<body class="bg-[#0a0a0a] overflow-x-hidden text-white antialiased">
     <!-- navbar start -->
     <header>
         <nav class="absolute top-0 left-0 w-full z-20 flex items-center justify-between px-12 py-6 text-white bg-black/20 backdrop-blur-sm">
@@ -132,8 +132,7 @@
 
         <div class="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-8 items-center">
             <div class="h-32 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
-            <a href="#" class="rotate-90 text-[10px] uppercase tracking-[0.4em] text-white/30 hover:text-[#FBB108] transition-all">Instagram</a>
-            <a href="#" class="rotate-90 text-[10px] uppercase tracking-[0.4em] text-white/30 hover:text-[#FBB108] transition-all">LinkedIn</a>
+            <a href="#" class="rotate-90 text-[10px] uppercase tracking-[0.4em] text-white/30 hover:text-[#FBB108] transition-all">Energy Solar</a>
             <div class="h-32 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
         </div>
 

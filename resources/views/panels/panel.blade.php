@@ -19,6 +19,7 @@
     </div>
 @endif
 
+
 <div id="panelModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
     <div class="fixed inset-0 bg-black/40 backdrop-blur-[4px]" onclick="toggleModal()"></div>
 
@@ -139,7 +140,7 @@
 </div>
 
 {{-- Section des Cards --}}
-<div class="px-8 mt-10">
+<div class="px-8 mt-10  rounded-3xl py-10 ">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($zones as $zone)
             @foreach($zone->panels as $panel)
@@ -149,7 +150,7 @@
                     <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#FBB108]/10 rounded-full blur-3xl group-hover:bg-[#FBB108]/20 transition-all"></div>
 
                     {{-- Header della Card --}}
-                    <div class="flex justify-between items-start mb-6 relative z-10">
+                    <div class="flex justify-between items-start mb-6 relative z-10 bg-[url('{{ asset('images/panel-background.jpg') }}')] bg-cover bg-center">
                         <div class="flex items-center gap-3">
                             <div class="p-3 bg-[#FBB108]/10 rounded-2xl group-hover:bg-[#FBB108] group-hover:text-black transition-all duration-300">
                                 <i class="fa-solid fa-solar-panel text-xl"></i>

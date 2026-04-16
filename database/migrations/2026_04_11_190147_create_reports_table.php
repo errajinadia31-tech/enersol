@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('zone_id')->constrained()->cascadeOnDelete();
-            $table->decimal('total_energy', 15, 2);
+$table->foreignId('user_id')->constrained()->cascadeOnDelete();            $table->decimal('total_energy', 15, 2);
             $table->date('date_from');
             $table->date('date_to');
             $table->integer('period_days');

@@ -85,26 +85,99 @@
 
 
     <!-- section cards consommation et production -->
-    <section class="">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mt-2">
-            <!-- Production d'énergie card -->
-            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col items-center">
-                <h2 class="text-gray-400 self-start mb-8 font-medium">Production d'énergie</h2>
-            </div>
-            <!-- Consommation card -->
-            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col items-center">
-                <h2 class="text-gray-400 self-start mb-8 font-medium">Consommation</h2>
-
-            </div>
-            <!-- statistique card -->
-            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col items-center w-[640px]">
-                <h2 class="text-gray-400 self-start mb-8 font-medium">statistique</h2>
+<section class="mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl">
+        
+        <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col hover:border-[#FBB108]/30 transition-all group">
+            <h2 class="text-gray-400 self-start mb-8 font-medium">Production d'énergie</h2>
+            <div class="flex items-baseline gap-2">
+                <span id="live-power" class="text-[#FBB108] text-4xl font-black">0</span>
+                <span class="text-gray-500 text-[10px] uppercase font-bold tracking-widest text-shadow">Watts</span>
             </div>
         </div>
 
-    </section>
+        <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col hover:border-blue-500/30 transition-all">
+            <h2 class="text-gray-400 self-start mb-8 font-medium">Consommation</h2>
+            <div class="flex items-baseline gap-2">
+                <span id="live-cons" class="text-blue-400 text-4xl font-black">0</span>
+                <span class="text-gray-500 text-[10px] uppercase font-bold tracking-widest text-shadow">kWh</span>
+            </div>
+        </div>
+
+        <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col w-full md:col-span-3">
+            <h2 class="text-gray-400 self-start mb-8 font-medium">Statistiques de Production</h2>
+            <div class="h-[300px] w-full">
+                <canvas id="energyChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 </main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('energyChart').getContext('2d');
+    
+    // Dégradé orange pour correspondre à ton thème EnerSol
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(251, 177, 8, 0.4)');
+    gradient.addColorStop(1, 'rgba(251, 177, 8, 0)');
+
+    const energyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [], // Les heures s'ajouteront ici
+            datasets: [{
+                label: 'Puissance (W)',
+                data: [], 
+                borderColor: '#FBB108', // Ton orange EnerSol
+                backgroundColor: gradient,
+                fill: true,
+                tension: 0.4, // Courbe fluide
+                borderWidth: 2,
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { 
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#6b7280' }
+                },
+                x: { 
+                    grid: { display: false },
+                    ticks: { color: '#6b7280' }
+                }
+            }
+        }
+    });
+
+    // Fonction de mise à jour (Simulation pour l'instant)
+    function updateDashboard() {
+        const mockPower = Math.floor(Math.random() * (500 - 400 + 1) + 400);
+        const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+
+        // Mise à jour des textes
+        document.getElementById('live-power').innerText = mockPower;
+
+        // Mise à jour du graphique
+        if (energyChart.data.labels.length > 10) {
+            energyChart.data.labels.shift();
+            energyChart.data.datasets[0].data.shift();
+        }
+        energyChart.data.labels.push(time);
+        energyChart.data.datasets[0].data.push(mockPower);
+        energyChart.update();
+    }
+
+    // Mise à jour toutes les 5 secondes (Comme prévu dans ta Roadmap)
+    setInterval(updateDashboard, 5000);
+    
+</script>
 
 @endsection

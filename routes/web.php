@@ -48,4 +48,8 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('/statistiques', [DashboardController::class, 'Statistiques'])
+    ->middleware(['auth', 'verified'])
+    ->name('statistiques');
+
 require __DIR__.'/auth.php';
