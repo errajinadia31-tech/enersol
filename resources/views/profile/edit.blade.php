@@ -16,7 +16,7 @@
                     </div>
                     
                     <div class="flex items-center gap-4">
-                        <img src="{{ asset('images/logo.png') }}" class="w-8 h-8 object-contain opacity-80" alt="Logo">
+                        <img src="{{ asset('images/logo1.png') }}" class="w-8 h-8 object-contain opacity-80" alt="Logo">
                     </div>
                 </div>
             </header>

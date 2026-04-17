@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/logo1.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -39,24 +39,24 @@
     <header>
         <nav class="absolute top-0 left-0 w-full z-20 flex items-center justify-between px-12 py-6 text-white bg-black/20 backdrop-blur-sm">
             <div class="flex items-center">
-                <img src="{{ asset('images/logo.png') }}" class="w-[38px]" alt="Logo">
-                <span class="font-bold text-2xl tracking-tighter uppercase italic">Ener<span class="text-[#FBB108]">Sol</span></span>
+                <img src="{{ asset('images/logo1.png') }}" class="w-[38px]" alt="Logo">
+                <span class="font-bold text-2xl tracking-tighter uppercase italic"> Ener <span class="text-[#FBB108]">Sol</span></span>
             </div>
 
             <nav class="hidden md:flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
                 <a href=""
                     class="border rounded-full px-5 py-2 transition-all  hover:bg-white hover:text-black transition duration-300">
-                    Home
+                    Accueil
                 </a>
 
                 <a href="#features"
                     class="border border-white/20 rounded-full px-5 py-2 text-gray-300 transition-all hover:bg-white hover:text-black transition duration-300 ">
-                    Features
+                    Caractéristiques
                 </a>
 
                 <a href="#about"
                     class="border border-white/20 rounded-full px-5 py-2  text-gray-300 transition-all hover:bg-white hover:text-black transition duration-300 ">
-                    About Us
+                    A propos
                 </a>
             </nav>
             <div class="hidden md:block">
@@ -114,7 +114,7 @@
                             <span class="text-[9px] text-white/40 uppercase font-bold tracking-widest">Analytics</span>
                         </div>
                         <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] flex flex-col items-center justify-center text-center group hover:border-[#FBB108]/50 transition-all">
-                            <i class="fa-solid fa-leaf text-[#FBB108] mb-3 text-xl"></i>
+                            <img src="{{ asset('images/logo1.png') }}" class="w-8 h-8 mb
                             <span class="text-[9px] text-white/40 uppercase font-bold tracking-widest">Eco-Friendly</span>
                         </div>
                         <div class="col-span-2 p-6 bg-[#FBB108]/10 backdrop-blur-md border border-[#FBB108]/20 rounded-[2rem] flex items-center justify-between px-8">
@@ -144,7 +144,7 @@
     <section class="py-32 px-8 xl:px-0 bg-[#0a0a0a]" id="features">
         <div class="text-center mb-20">
             <h3 class="text-ener-gold uppercase tracking-[0.4em] text-xs font-bold mb-3" data-aos="fade-up">Technologie</h3>
-            <h2 class="text-4xl md:text-5xl font-black uppercase" data-aos="fade-up" data-aos-delay="200">Our <span class="italic font-light">Features</span></h2>
+            <h2 class="text-4xl md:text-5xl font-black uppercase" data-aos="fade-up" data-aos-delay="200">NOS <span class="italic font-light">fonctionnalités </span></h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
@@ -271,7 +271,7 @@
 
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-2 mb-6">
-                        <img src="{{ asset('images/logo.png') }}" class="w-[35px]" alt="EnerSol Logo">
+                        <img src="{{ asset('images/logo1.png') }}" class="w-[35px]" alt="EnerSol Logo">
                         <span class="text-white font-bold text-xl tracking-tighter uppercase italic">Ener<span class="text-[#FBB108]">Sol</span></span>
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed mb-6">

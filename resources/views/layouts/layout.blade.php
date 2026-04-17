@@ -8,7 +8,7 @@
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- logo icon -->
-    <link rel="shortcut icon" href="{{asset('images/logo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('images/logo1.png')}}" type="image/x-icon">
     <!-- font google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
         <!-- navbar start-->
         <header class="flex items-center justify-between px-8 py-4 text-white mb-6">
             <div class="flex items-center">
-                <img src="{{ asset('images/logo.png') }}" class="w-[38px]" alt="Logo">
+                <img src="{{ asset('images/logo1.png') }}" class="w-[38px]" alt="Logo">
                 <span class="font-bold text-2xl tracking-tighter uppercase italic">Ener<span class="text-[#FBB108]">Sol</span></span>
             </div>
             
