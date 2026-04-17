@@ -64,10 +64,9 @@ class EnergyDataController extends Controller
     }
 
 public function getChartData($panel_id) {
-    // التأكد أن المستخدم يملك هذه اللوحة
     $panel = auth()->user()->panels()->findOrFail($panel_id);
 
-    $data = $panel->energyData() // استخدام العلاقة مباشرة أسرع وأكثر أماناً
+    $data = $panel->energyData() 
                 ->latest()
                 ->take(20)
                 ->get(['voltage', 'current', 'power', 'created_at']);

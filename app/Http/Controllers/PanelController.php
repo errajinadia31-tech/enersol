@@ -50,9 +50,8 @@ class PanelController extends Controller
 
     public function destroy(Panel $panel)
     {
-        // Securité: Ila chi user 7awel y-msah panel dyal wahed akhor b l-ID
         if ($panel->user_id !== Auth::id()) {
-            return abort(403, 'Hadi machi dyalk!');
+            return abort(403, 'Non autorisé');
         }
 
         $panel->delete();
