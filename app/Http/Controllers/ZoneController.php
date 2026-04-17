@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Zone;
-use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ZoneController extends Controller
@@ -13,7 +13,6 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -26,17 +25,19 @@ class ZoneController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate(['name' => 'required|string|max:255']);
-    
-    Auth::user()->zones()->create([
-        'name' => $request->name
+     */public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'city' => 'required|string|max:100' // أضف المدينة لأنها في الـ migration
     ]);
+    
+    // ربط المنطقة بالمستخدم أوتوماتيكياً
+    auth()->user()->zones()->create($request->all());
 
     return back()->with('success', 'Zone ajoutée !');
-    }
+}
+
 
     /**
      * Display the specified resource.

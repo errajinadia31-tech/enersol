@@ -6,9 +6,8 @@
 
     <section>
         <div class="mx-auto grid grid-cols-1 lg:grid-cols-3 gap-[5rem] items-start">
-            <!-- Desc -->
             <div class="lg:col-span-1">
-                <h1 class="text-6xl font-bold  mb-6">
+                <h1 class="text-6xl font-bold mb-6">
                     Welcome in,<br>
                     <span>Ener<span class="text-[#FBB108]">Sol</span></span>
                 </h1>
@@ -16,7 +15,6 @@
                     Suivi et analyse de la production et de la consommation d'énergie solaire
                 </p>
 
-                <!-- icons -->
                 <div class="flex mb-8 mt-2">
                     <div class="w-8 h-8 flex items-center justify-center rounded-full border text-green-600 border-green-600">
                         <i class="fa-solid fa-battery-full text-xs"></i>
@@ -30,19 +28,19 @@
                 </div>
             </div>
 
-            <!--  section bateries and meteo cards -->
             <div class="lg:col-span-2 flex justify-end">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <!-- batterie card -->
                     <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] w-[320px] transition-all hover:border-[#FBB108]/30 group">
                         <div class="flex justify-between mb-6">
                             <h2 class="text-gray-400">Batterie 🔋</h2>
                         </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-white text-3xl font-black">{{ $totalPanels }}</span>
+                            <span class="text-gray-500 text-[10px] uppercase font-bold">Unités</span>
+                        </div>
                     </div>
 
-                    <!-- meteo card -->
                     <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] w-[320px] transition-all hover:border-[#FBB108]/30 group">
-
                         <div class="flex justify-between items-center mb-8">
                             <h2 class="text-gray-400 text-xs uppercase tracking-[0.2em] font-bold">Météo</h2>
                             @if(isset($weather['weather'][0]['icon']))
@@ -73,69 +71,80 @@
                         @else
                         <div class="py-10 text-center">
                             <p class="text-gray-600 text-[10px] uppercase tracking-widest">Données indisponibles</p>
-                            <span class="text-[8px] text-gray-700 italic">Vérifiez l'activation de l'API</span>
                         </div>
                         @endif
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
+   <section class="mt-8">
+        {{-- استعملت gap-8 و max-w-full باش يجي العرض متناسق مع باقي الصفحة --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+            
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-10 rounded-[1.5rem] flex flex-col hover:border-[#FBB108]/30 transition-all group h-full">
+                <h2 class="text-gray-400 self-start mb-10 font-medium">Production d'énergie</h2>
+                <div class="flex items-baseline gap-2">
+                    <span id="live-power" class="text-[#FBB108] text-5xl font-black italic">0</span>
+                    <span class="text-gray-500 text-[11px] uppercase font-bold tracking-widest">Watts</span>
+                </div>
+            </div>
 
-    <!-- section cards consommation et production -->
-<section class="mt-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl">
-        
-        <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col hover:border-[#FBB108]/30 transition-all group">
-            <h2 class="text-gray-400 self-start mb-8 font-medium">Production d'énergie</h2>
-            <div class="flex items-baseline gap-2">
-                <span id="live-power" class="text-[#FBB108] text-4xl font-black">0</span>
-                <span class="text-gray-500 text-[10px] uppercase font-bold tracking-widest text-shadow">Watts</span>
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-10 rounded-[1.5rem] flex flex-col hover:border-blue-500/30 transition-all h-full">
+                <h2 class="text-gray-400 self-start mb-10 font-medium">Consommation</h2>
+                <div class="flex items-baseline gap-2">
+                    <span id="live-cons" class="text-blue-400 text-5xl font-black italic">0</span>
+                    <span class="text-gray-500 text-[11px] uppercase font-bold tracking-widest">kWh</span>
+                </div>
+            </div>
+
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-10 rounded-[1.5rem] flex flex-col hover:border-green-500/30 transition-all h-full">
+                <h2 class="text-gray-400 self-start mb-10 font-medium">Capacité Totale</h2>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-green-500 text-5xl font-black italic">{{ number_format($totalPower) }}</span>
+                    <span class="text-gray-500 text-[11px] uppercase font-bold tracking-widest">Wp</span>
+                </div>
+            </div>
+
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-10 rounded-[1.5rem] flex flex-col hover:border-red-500/30 transition-all h-full">
+                <h2 class="text-gray-400 self-start mb-10 font-medium italic">Maintenance</h2>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-red-500 text-5xl font-black italic">{{ $maintenanceCount }}</span>
+                    <span class="text-gray-500 text-[11px] uppercase font-bold tracking-widest">Alertes</span>
+                </div>
+            </div>
+
+            <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1.5rem] flex flex-col w-full md:col-span-2 lg:col-span-4">
+                <h2 class="text-gray-400 self-start mb-8 font-medium italic">Statistiques de Production</h2>
+                <div class="h-[350px] w-full">
+                    <canvas id="energyChart"></canvas>
+                </div>
             </div>
         </div>
-
-        <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col hover:border-blue-500/30 transition-all">
-            <h2 class="text-gray-400 self-start mb-8 font-medium">Consommation</h2>
-            <div class="flex items-baseline gap-2">
-                <span id="live-cons" class="text-blue-400 text-4xl font-black">0</span>
-                <span class="text-gray-500 text-[10px] uppercase font-bold tracking-widest text-shadow">kWh</span>
-            </div>
-        </div>
-
-        <div class="bg-[#121212]/50 backdrop-blur-md border border-white/10 p-8 rounded-[1rem] flex flex-col w-full md:col-span-3">
-            <h2 class="text-gray-400 self-start mb-8 font-medium">Statistiques de Production</h2>
-            <div class="h-[300px] w-full">
-                <canvas id="energyChart"></canvas>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+    </section>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const ctx = document.getElementById('energyChart').getContext('2d');
-    
-    // Dégradé orange pour correspondre à ton thème EnerSol
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(251, 177, 8, 0.4)');
     gradient.addColorStop(1, 'rgba(251, 177, 8, 0)');
 
+    const totalCapacity = {{ $totalPower ?? 0 }};
+
     const energyChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [], // Les heures s'ajouteront ici
+            labels: [], 
             datasets: [{
                 label: 'Puissance (W)',
                 data: [], 
-                borderColor: '#FBB108', // Ton orange EnerSol
+                borderColor: '#FBB108',
                 backgroundColor: gradient,
                 fill: true,
-                tension: 0.4, // Courbe fluide
+                tension: 0.4,
                 borderWidth: 2,
                 pointRadius: 0
             }]
@@ -157,27 +166,26 @@
         }
     });
 
-    // Fonction de mise à jour (Simulation pour l'instant)
     function updateDashboard() {
-        const mockPower = Math.floor(Math.random() * (500 - 400 + 1) + 400);
+        let currentPower = 0;
+        if (totalCapacity > 0) {
+            currentPower = Math.floor(totalCapacity * (0.8 + Math.random() * 0.15));
+        }
+
         const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('live-power').innerText = currentPower;
 
-        // Mise à jour des textes
-        document.getElementById('live-power').innerText = mockPower;
-
-        // Mise à jour du graphique
         if (energyChart.data.labels.length > 10) {
             energyChart.data.labels.shift();
             energyChart.data.datasets[0].data.shift();
         }
         energyChart.data.labels.push(time);
-        energyChart.data.datasets[0].data.push(mockPower);
+        energyChart.data.datasets[0].data.push(currentPower);
         energyChart.update();
     }
 
-    // Mise à jour toutes les 5 secondes (Comme prévu dans ta Roadmap)
     setInterval(updateDashboard, 5000);
-    
+    updateDashboard();
 </script>
 
 @endsection

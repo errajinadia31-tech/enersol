@@ -29,7 +29,7 @@ class MoroccoZonesSeeder extends Seeder
                 Zone::firstOrCreate([
                     'name' => $region,
                     'city' => $ville,
-                    'user_id' => 1
+                    'user_id' => null
                 ]);
             }
         }
