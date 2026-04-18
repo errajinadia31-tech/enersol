@@ -35,9 +35,8 @@
             
             <nav class="hidden lg:flex gap-3 text-xs uppercase tracking-widest">
                 <a href="{{ route('dashboard') }}" class="nav-link rounded-full px-5 py-2.5 {{ request()->routeIs('dashboard') ? 'active-nav' : '' }}">Dashboard</a>
-                <a href="#" class="nav-link rounded-full px-5 py-2.5">Consommation</a>
-                <a href="{{ route('statistiques') }}" class="nav-link rounded-full px-5 py-2.5 {{ request()->routeIs('statistiques') ? 'active-nav' : '' }}">Statistique</a>
                 <a href="{{ route('panels.index') }}" class="nav-link rounded-full px-5 py-2.5 {{ request()->routeIs('panels.index') ? 'active-nav' : '' }}">Panneaux</a>
+                <a href="{{ route('statistiques') }}" class="nav-link rounded-full px-5 py-2.5 {{ request()->routeIs('statistiques') ? 'active-nav' : '' }}">Statistique</a>
                 <a href="#" class="nav-link rounded-full px-5 py-2.5">Rapports</a>
             </nav>
 
