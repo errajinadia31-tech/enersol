@@ -32,7 +32,7 @@
                 
                 <div class="flex flex-col items-center mb-6">
                     <div class="w-10 h-10 mb-2">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-full h-full object-contain text-center">
+                        <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="w-full h-full object-contain text-center">
                     </div>
                     <span class="font-bold text-xl md:text-2xl tracking-tighter uppercase italic text-center">Ener<span class="text-[#FBB108]">Sol</span></span>
                     <p class="text-white/60 text-[9px] uppercase tracking-[0.25em] text-center">Créer un compte</p>

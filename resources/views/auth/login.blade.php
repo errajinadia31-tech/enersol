@@ -38,7 +38,7 @@
     <div class="form-container w-full max-w-[480px] transition-transform duration-300">
         
         <div class="flex flex-col items-center mb-6">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 mb-2 object-contain text-center">
+            <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="w-10 h-10 mb-2 object-contain text-center">
             <h1 class="font-bold text-xl md:text-2xl tracking-tighter uppercase italic">Ener<span class="text-[#FBB108]">Sol</span></h1>
             <p class="text-white/50 text-[9px] uppercase tracking-[0.3em] mt-1 text-center">Authentification</p>
         </div>
